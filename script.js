@@ -6,6 +6,20 @@ class Livro {
     Disponibilidade
 }
 
+class Biblioteca {
+    Nome
+    Endereco
+    Telefone
+
+    BuscarLivro(nomeLivro) {
+        Livros.forEach(nome => {
+            if (nomeLivro == nome.Titulo) {
+                console.log(nome)
+            }
+        })
+    }
+}
+
 let livroUm = new Livro()
 livroUm.Titulo = "O Guerreiro"
 livroUm.Autor = "Mark Audren"
