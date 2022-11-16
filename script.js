@@ -5,12 +5,23 @@ class Livro {
     Editora
     AnoPublicacao
     Disponibilidade
+
+    ConstrutorLivro(nomeLivro, autorLivro, editoraLivro, anoLivro) {
+        let livro = new Livro()
+        livro.Titulo = nomeLivro
+        livro.Autor = autorLivro
+        livro.Editora = editoraLivro
+        livro.AnoPublicacao = anoLivro
+        livro.Disponibilidade = true
+        livros.push(livro)
+    }
 }
 
 class Biblioteca {
     Nome
     Endereco
     Telefone
+    AcervoDeLivros = []
 
     BuscarLivro(nomeLivro) {
         livros.forEach(nome => {
@@ -41,8 +52,28 @@ class Biblioteca {
 
     }
 
+    ConstrutorBiblioteca(nomeBiblioteca, enderecoBiblioteca, telefoneBiblioteca) {
+        let biblioteca = new Biblioteca();
+        biblioteca.Nome = nomeBiblioteca
+        biblioteca.Endereco = enderecoBiblioteca
+        biblioteca.Telefone = telefoneBiblioteca
+        bibliotecas.push(biblioteca)
+    }
 
+    AdicionarLivro(nomeLivro, nomeBiblioteca) {
+        bibliotecas.forEach(x => {
+            if (nomeBiblioteca == x.Nome) {
+                livros.forEach(y => {
+                    if (nomeLivro == y.Titulo) {
+                        x.AcervoDeLivros.push(y)
+                    }
+                })
+            }
+        })
+    }
 }
+
+
 
 
 let livroUm = new Livro();
@@ -69,10 +100,25 @@ livroTres.Disponibilidade = false
 let livros = [livroUm, livroDois, livroTres]
 
 let bibliotecaUm = new Biblioteca()
-bibliotecaUm.Nome = "Biblioteca Centro"
+bibliotecaUm.Nome = "Biblioteca"
 bibliotecaUm.Endereco = "Centro,Batatais SP"
 bibliotecaUm.Telefone = "16 3662-6782"
+
+let bibliotecas = [bibliotecaUm]
 
 bibliotecaUm.BuscarLivro("Vikings")
 console.log(bibliotecaUm.EmprestimoLivro("O Samurai"))
 bibliotecaUm.DevolucaoLivro("Vikings")
+
+let nomeBiblioteca = prompt("")
+let nomeLivro = prompt("")
+let index
+bibliotecas.forEach(x => {
+    index = 0
+    if (nomeBiblioteca == x.Nome) {
+        return index;
+    }
+    index++
+})
+
+bibliotecas[index].AdicionarLivro(nomeLivro, nomeBiblioteca)
