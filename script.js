@@ -1,3 +1,4 @@
+
 class Livro {
     Titulo
     Autor
@@ -12,33 +13,55 @@ class Biblioteca {
     Telefone
 
     BuscarLivro(nomeLivro) {
-        Livros.forEach(nome => {
+        livros.forEach(nome => {
             if (nomeLivro == nome.Titulo) {
                 console.log(nome)
             }
         })
     }
+
+    EmprestimoLivro(nomeLivro) {
+        let livroDisponivel = false
+        livros.forEach(nome => {
+            if (nomeLivro == nome.Titulo && nome.Disponibilidade == true) {
+                nome.Disponibilidade = false
+                livroDisponivel = true
+            }
+        })
+        return livroDisponivel
+    }
+
 }
 
-let livroUm = new Livro()
+
+let livroUm = new Livro();
 livroUm.Titulo = "O Guerreiro"
 livroUm.Autor = "Mark Audren"
 livroUm.Editora = "Panene"
 livroUm.AnoPublicacao = 2001
 livroUm.Disponibilidade = true
 
-let livroDois = new Livro()
+let livroDois = new Livro();
 livroDois.Titulo = "O Samurai"
 livroDois.Autor = "Luther Jax"
 livroDois.Editora = "The Editor"
 livroDois.AnoPublicacao = 2010
 livroDois.Disponibilidade = true
 
-let livroTres = new Livro()
+let livroTres = new Livro();
 livroTres.Titulo = "Vikings"
 livroTres.Autor = "Ragnar"
 livroTres.Editora = "Kattegat Editing"
 livroTres.AnoPublicacao = 1993
 livroTres.Disponibilidade = false
 
-let Livros = [livroUm, livroDois, livroTres]
+let livros = [livroUm, livroDois, livroTres]
+
+let bibliotecaUm = new Biblioteca()
+bibliotecaUm.Nome = "Biblioteca Centro"
+bibliotecaUm.Endereco = "Centro,Batatais SP"
+bibliotecaUm.Telefone = "16 3662-6782"
+
+
+console.log(bibliotecaUm.EmprestimoLivro("O Samurai"))
+
