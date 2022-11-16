@@ -31,6 +31,17 @@ class Biblioteca {
         return livroDisponivel
     }
 
+    DevolucaoLivro(nomeLivro) {
+        livros.forEach(nome => {
+            if (nomeLivro == nome.Titulo) {
+                nome.Disponibilidade = true
+                console.log("Livro atualizado")
+            }
+        })
+
+    }
+
+
 }
 
 
@@ -62,6 +73,6 @@ bibliotecaUm.Nome = "Biblioteca Centro"
 bibliotecaUm.Endereco = "Centro,Batatais SP"
 bibliotecaUm.Telefone = "16 3662-6782"
 
-
+bibliotecaUm.BuscarLivro("Vikings")
 console.log(bibliotecaUm.EmprestimoLivro("O Samurai"))
-
+bibliotecaUm.DevolucaoLivro("Vikings")
